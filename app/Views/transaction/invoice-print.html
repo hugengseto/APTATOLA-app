@@ -1,0 +1,142 @@
+<?php
+
+use App\Helpers\DateHelper;
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><?= $title; ?></title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="/assets/plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/assets/dist/css/adminlte.min.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Main content -->
+      <section class="invoice">
+         <!-- title row -->
+         <div class="row">
+            <div class="col-12">
+                <h4>
+                    <img class="border rounded-circle" src="/assets/dist/img/aptatola.png" alt="AdminLTELogo" height="80" width="80"> <?= $toko; ?>
+                    <small class="float-right">Transaksi: <?= DateHelper::formatDate($customer['created_at']); ?></small>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- info row -->
+        <div class="row invoice-info">
+            <div class="col-sm-3 invoice-col">
+                Detail Toko
+                <address>
+                    <strong><?= $toko; ?></strong><br>
+                    <?= $store['store_address']; ?><br>
+                    No HP: <?= $store['store_telp']; ?><br>
+                    Email: <?= $store['store_email']; ?>
+                </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-3 invoice-col">
+                Detail Pelanggan
+                <address>
+                    <strong><?= $customer['customer_name']; ?></strong><br>
+                    No HP: <?= $customer['customer_whatsapp']; ?><br>
+                </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-5 invoice-col">
+                <b>Invoice</b><br>
+                <br>
+                <b>Kode Transaksi:</b> <?= $customer['transaction_code']; ?><br>
+                <b>Estimasi Pengambilan:</b> <?= DateHelper::formatDate($pengambilan); ?><br>
+                <b>Waktu Pembayaran & Pengambilan:</b> <?= DateHelper::formatDate($customer['pay_time']); ?><br>
+                <b>Status:</b> <?= $customer['payment_status']; ?><br>
+                <b>Kasir:</b> <?= $customer['employee_name']; ?><br>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <!-- Table row -->
+        <div class="row">
+            <div class="col-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Jumlah (kg)</th>
+                            <th>Paket</th>
+                            <th>Hari</th>
+                            <th>Harga(/kg)</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= $customer['weight']; ?></td>
+                            <td><?= $customer['package_name']; ?></td>
+                            <td><?= $customer['duration']; ?></td>
+                            <td><?= number_format($customer['price'], 0, ',', '.'); ?></td>
+                            <td><?= number_format($customer['total_payment'], 0, ',', '.'); ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <!-- accepted payments column -->
+            <div class="col-sm-6 mb-3">
+                <p class="lead">Metode Pembayaran:</p>
+                <?php
+                if ($customer['payment_method'] == 'Tunai') { ?>
+                    <img src="/tunai.png" alt="Tunai" width="180">
+                <?php } else { ?>
+                    <img src="/qris.png" alt="Qris" width="180">
+                <?php } ?>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>Total:</th>
+                            <td><?= number_format($customer['total_payment'], 0, ',', '.'); ?></td>
+                        </tr>
+                        <tr>
+                            <th>Bayar:</th>
+                            <td><?= number_format($customer['money_paid'], 0, ',', '.'); ?></td>
+                        </tr>
+                        <tr>
+                            <th>Kembali:</th>
+                            <td><?= number_format($customer['refund'], 0, ',', '.'); ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- Page specific script -->
+    <script>
+      window.addEventListener("load", window.print());
+    </script>
+  </body>
+</html>

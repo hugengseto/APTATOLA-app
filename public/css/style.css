@@ -1,0 +1,28 @@
+#transaction-list td,
+#transaction-list th,
+#package td,
+#package th,
+#employee td,
+#employee th {
+  text-align: center;
+  zoom: 90%;
+}
+
+#employee td > .photo {
+  width: 120px;
+}
+
+.status {
+  cursor: pointer;
+}
+
+.status-complete {
+  cursor: default;
+}
+
+#radioError {
+  color: #dc3545; /* Warna teks merah */
+  display: none; /* Mulai dengan menyembunyikan pesan kesalahan */
+  font-size: 0.875rem; /* Ukuran font yang lebih kecil */
+  margin-top: 0.25rem; /* Jarak atas dari pesan kesalahan ke radio button */
+}
