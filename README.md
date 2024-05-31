@@ -19,4 +19,4 @@
 - password : admin
 
 ## Tambahan 
-untuk teman-teman jika ingin mengganti nomer whatsapp untuk mengirim invoice bisa daftar akun di https://ultramsg.com/ lalu buat instace baru dan nanti tokennya diubah ya di bagian controllernya.
+untuk teman-teman jika ingin mengganti nomer whatsapp untuk mengirim invoice bisa daftar akun di https://ultramsg.com/ lalu buat instace baru dan nanti token dan URL Instance nya diubah ya di bagian controllernya, sesuaikan di akun ultramsg.com teman-teman.
