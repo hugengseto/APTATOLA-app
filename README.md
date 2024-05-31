@@ -15,8 +15,8 @@
 6. jalankan perintah "php spark serve" untuk menjalankan aplikasinya.
 
 ## akun untuk masuk APTATOLA
-username : admin
-password : admin
+- username : admin
+- password : admin
 
 ## Tambahan 
 untuk teman-teman jika ingin mengganti nomer whatsapp untuk mengirim invoice bisa daftar akun di https://ultramsg.com/ lalu buat instace baru dan nanti tokennya diubah ya di bagian controllernya.
