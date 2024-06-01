@@ -3,16 +3,20 @@
 namespace App\Controllers;
 
 use App\Models\AuthModel;
+use App\Models\StoreModel;
 use Config\Services;
 
 class Auth extends BaseController
 {
-    protected string $toko = 'Zahra Laundry';
     protected $authModel;
+    protected string $toko;
 
     public function __construct()
     {
         $this->authModel = new AuthModel();
+        $storeModel = new StoreModel();
+        $toko = $storeModel->first();
+        $this->toko = $toko['store_name'];
     }
 
     public function index()
